@@ -1,14 +1,16 @@
 const path = require('path');
-const babelPresetEs2015 = require('babel-preset-es2015');
-const babelPresetReact = require('babel-preset-react');
-const stage0 = require('babel-preset-stage-0');
+const babelPresetEnv = require('@babel/preset-env');
+const babelPresetReact = require('@babel/preset-react');
+const babelPresetTypescript = require('@babel/preset-typescript');
+const babelPluginModuleResolver = require('babel-plugin-module-resolver');
 
 //indirect 
 require('babel-loader');
-require('babel-core');
+require('@babel/core');
 require('style-loader');
 require('css-loader');
 require('sass-loader');
+require('less-loader');
 require('node-sass');
 require('json-loader');
 require('url-loader');
@@ -24,11 +26,25 @@ const configure = () => {
         },
         module: { 
             rules: [{
-                test: /.(js|jsx)$/,
+                test: /.((ts|js)x?)$/,
                 loader: 'babel-loader',
                 options: {
                     babelrc: false,
-                    presets:[babelPresetReact, babelPresetEs2015, stage0 ]
+                    presets: [babelPresetEnv, [babelPresetReact, { "pragma": "Taro.createElement" }], [babelPresetTypescript, { "jsxPragma": "Taro" }]],
+                    plugins: [
+                        [
+                            babelPluginModuleResolver,
+                            {
+                                "root": [
+                                    "."
+                                ],
+                                "alias": {
+                                    "@tarojs/taro": "react",
+                                    "@tarojs/components": "@kokoro/tarojs-react-components"
+                                }
+                            }
+                        ]
+                    ]
                 }
             }, {
                 test: /\.css$/,
@@ -54,7 +70,21 @@ const configure = () => {
                 }, {
                     loader: "sass-loader" // compiles Sass to CSS
                 }]
+            }, {
+                test: /\.less$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader", // translates CSS into CommonJS
+                    options: {
+                        import: true,
+                        modules: true,
+                    }
+                }, {
+                    loader: "less-loader" // compiles Sass to CSS
+                }]
             },
+            
     
             // "url" loader works just like "file" loader but it also embeds
             // assets smaller than specified size as data URLs to avoid requests.
