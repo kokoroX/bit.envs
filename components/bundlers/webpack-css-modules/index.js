@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import MemoryFS from 'memory-fs';
 import configure from './webpack.config';
 
-const compiledFileTypes = ['js', 'jsx', 'ts', 'tsx'];
+const compiledFileTypes = ['js', 'jsx', 'ts', 'tsx', 'less'];
 
 function compile(files, distRootPath, context) {
   let mainFile = files.find(file => file.relative === context.componentObject.mainFile);
@@ -38,6 +38,9 @@ function _toCompile(file) {
 
 function runWebpack(mainFile, distRootPath, testFiles) {
   var conf = getConfig(mainFile, distRootPath, testFiles);
+  conf.resolve = {
+    extensions: compiledFileTypes.map(item => '.' + item)
+  }
   var compiler = webpack(conf);
   
   var fs = new MemoryFS();
