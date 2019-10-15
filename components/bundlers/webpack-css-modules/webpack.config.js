@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const babelPresetEnv = require('@babel/preset-env');
 const babelPresetReact = require('@babel/preset-react');
 const babelPresetTypescript = require('@babel/preset-typescript');
@@ -101,7 +102,13 @@ const configure = () => {
 
         externals: [ nodeExternals({
             importType: PACKAGE_TYPE
-        }) ]
+        }) ],
+
+        plugins: [
+            webpack.DefinePlugin({
+                "process.env.TARO_ENV": JSON.stringify('h5')
+            }),
+        ]
     };
 }
 
