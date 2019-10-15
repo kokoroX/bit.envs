@@ -1,6 +1,6 @@
 {
   "name": "@bit/bit.envs.bundlers.webpack-css-modules",
-  "version": "4.0.1",
+  "version": "1.0.1",
   "homepage": "https://bit.dev/bit/envs/bundlers/webpack-css-modules",
   "main": "index.js",
   "dependencies": {
@@ -22,7 +22,6 @@
     "webpack": "^4.0.1",
     "webpack-node-externals": "1.7.2"
   },
-  "devDependencies": {},
   "peerDependencies": {},
   "license": "SEE LICENSE IN LICENSE",
   "bit": {

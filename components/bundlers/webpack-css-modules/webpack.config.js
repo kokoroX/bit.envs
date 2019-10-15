@@ -40,7 +40,8 @@ const configure = () => {
                                 ],
                                 "alias": {
                                     "@tarojs/taro": "react",
-                                    "@tarojs/components": "tarojs-react-components"
+                                    "@tarojs/components": "tarojs-react-components",
+                                    "mp-colorui": "bit-mp-colorui"
                                 }
                             }
                         ]
