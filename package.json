@@ -1,6 +1,6 @@
 {
   "name": "envs",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "@bit/bit.envs.bundlers.vue": "file:./components/bundlers/vue",
     "@bit/bit.envs.bundlers.webpack": "file:./components/bundlers/webpack",
     "@bit/bit.envs.bundlers.webpack-css-modules": "file:./components/bundlers/webpack-css-modules",
+    "@bit/bit.envs.compilers.angular": "file:./components/compilers/angular",
     "@bit/bit.envs.compilers.babel": "file:./components/compilers/babel",
     "@bit/bit.envs.compilers.flow": "file:./components/compilers/flow",
     "@bit/bit.envs.compilers.preact": "file:./components/compilers/preact",
@@ -28,8 +29,7 @@
     "@bit/bit.envs.testers.karma-mocha-react": "file:./components/testers/karma-mocha-react",
     "@bit/bit.envs.testers.mocha": "file:./components/testers/mocha",
     "@bit/bit.envs.testers.mocha-react": "file:./components/testers/mocha-react",
-    "@bit/bit.envs.testers.mocha-react-css-modules": "file:./components/testers/mocha-react-css-modules",
-    "@bit/bit.envs.compilers.angular": "file:./components/compilers/angular"
+    "@bit/bit.envs.testers.mocha-react-css-modules": "file:./components/testers/mocha-react-css-modules"
   },
   "workspaces": [
     "components/.dependencies/*/*/*/*",
@@ -39,5 +39,8 @@
     "components/internal/typescript-base-compiler",
     "components/compilers/angular"
   ],
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "file-loader": "^4.2.0"
+  }
 }

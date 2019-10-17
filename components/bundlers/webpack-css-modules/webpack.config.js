@@ -15,6 +15,7 @@ require('less-loader');
 require('node-sass');
 require('json-loader');
 require('url-loader');
+require('file-loader');
 
 const nodeExternals = require('webpack-node-externals');
 const PACKAGE_TYPE = 'umd';
@@ -97,6 +98,16 @@ const configure = () => {
                     limit: 10000,
                     name: 'static/media/[name].[hash:8].[ext]'
                 }
+            },
+
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
+                ]
             }]
         },
 
@@ -105,7 +116,7 @@ const configure = () => {
         }) ],
 
         plugins: [
-            webpack.DefinePlugin({
+            new webpack.DefinePlugin({
                 "process.env.TARO_ENV": JSON.stringify('h5')
             }),
         ]

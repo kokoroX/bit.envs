@@ -1,6 +1,6 @@
 {
   "name": "@bit/bit.envs.bundlers.webpack-css-modules",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "homepage": "https://bit.dev/bit/envs/bundlers/webpack-css-modules",
   "main": "index.js",
   "dependencies": {
