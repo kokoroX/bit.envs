@@ -41,7 +41,7 @@ const configure = () => {
                                     "."
                                 ],
                                 "alias": {
-                                    "@tarojs/taro": "react",
+                                    "@tarojs/taro": "taro2react-h5",
                                     "@tarojs/components": "tarojs-react-components",
                                     "mp-colorui": "bit-mp-colorui"
                                 }
